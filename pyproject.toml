@@ -1,0 +1,11 @@
+[project]
+name = "english-teacher-evals"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.122.0",
+    "deepeval>=4.1.8",
+    "openai>=3.1.0",
+]
