@@ -122,6 +122,32 @@ right tool with the right argument". Free, instant, zero variance.
 Both shapes, with working code, are in `scorers/_template.py`. Worked
 examples: `solutions/example_scorers/`.
 
+## Uploading results to Confident AI
+
+deepeval is Confident AI's framework, so dashboard upload is built in. One-time
+setup (free account at [app.confident-ai.com](https://app.confident-ai.com)):
+
+```bash
+uv run deepeval login        # opens the browser, saves CONFIDENT_API_KEY
+# — or, if you already have a project API key:
+uv run deepeval login --confident-api-key <your-key>
+```
+
+Then run the suite through the pytest integration instead of the local runner —
+each invocation becomes one test run on the dashboard, with every case's score,
+threshold, and judge reasoning:
+
+```bash
+uv run deepeval test run tests/test_evals.py               # all 50, recorded (day-one baseline: 0% pass)
+CASES=tc01,tc02 uv run deepeval test run tests/test_evals.py   # a subset
+LIVE=1 uv run deepeval test run tests/test_evals.py        # after your fixes
+```
+
+Nice classroom pattern: upload the recorded run on day one, then a `LIVE=1` run
+after each fix session — the dashboard's pass-rate graph becomes the course
+progress bar. Without a Confident AI key everything still runs; results just
+stay local (`deepeval view` offers to save the latest run to the platform).
+
 ## Notes for instructors
 
 - The full flaw map, a reference fixed prompt, a fixed retriever, and

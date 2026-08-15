@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 .deepeval/
 .deepeval_telemetry.txt
+.env.local
+.pytest_cache/

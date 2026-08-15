@@ -120,8 +120,7 @@
     "input": "How do I form the present perfect?",
     "expected_output": "The present perfect is formed with 'have/has' + past participle, e.g. 'I have finished my homework.'",
     "retrieval_context": [
-      "The history of the English language is conventionally divided into Old English (roughly 450-1150), Middle English (roughly 1150-1500), and Modern English (1500 to the present). Old English was a Germanic language brought to Britain by Anglo-Saxon settlers, heavily inflected and largely unintelligible to modern readers, while Middle English absorbed enormous amounts of Norman French vocabulary after 1066.",
-      "There are many varieties of English spoken around the world, including British English, American English, Australian English, Indian English, and numerous creoles and pidgins; estimates of the total number of English speakers worldwide range from 1.5 to 2 billion people when second-language speakers are included, making it the most widely learned language on the planet by a considerable margin.",
+      
       "The present perfect is formed with 'have/has' + past participle: 'I have finished my homework.'"
     ],
     "actual_output": "The present perfect is formed with 'have/has' + past participle: 'I have finished my homework.'",
@@ -164,15 +163,16 @@
   {
     "id": "tc13",
     "title": "All three conditionals asked, none retrieved",
-    "metric": "ContextualRecall",
+    "metric": "ContextualPrecision",
     "lesson": "ContextualRecallMetric asks: does retrieval_context contain everything needed to produce the expected_output? With k too small, half the answer's source material is simply never retrieved.",
     "flaw": "retriever BUG 2: default k=2 is too small (and BUG 1 fills those 2 slots with junk)",
     "fix_hint": "Raise k in app/retrieval.py and fix the relevance scoring, then re-record the context.",
     "input": "Explain the first, second, and third conditionals with one example each.",
     "expected_output": "First conditional: 'if + present simple, will + base verb' for real future possibilities ('If it rains, we will stay home'). Second conditional: 'if + past simple, would + base verb' for unreal present situations ('If I had more time, I would read more'). Third conditional: 'if + past perfect, would have + past participle' for unreal past situations ('If I had studied, I would have passed').",
     "retrieval_context": [
-      "The history of the English language is conventionally divided into Old English (roughly 450-1150), Middle English (roughly 1150-1500), and Modern English (1500 to the present). Old English was a Germanic language brought to Britain by Anglo-Saxon settlers, heavily inflected and largely unintelligible to modern readers, while Middle English absorbed enormous amounts of Norman French vocabulary after 1066.",
-      "There are many varieties of English spoken around the world, including British English, American English, Australian English, Indian English, and numerous creoles and pidgins; estimates of the total number of English speakers worldwide range from 1.5 to 2 billion people when second-language speakers are included, making it the most widely learned language on the planet by a considerable margin."
+      "first conditional uses 'if + present simple, will",
+      "second condition: if + past simple, future with would/could",
+      "hellow how are you"
     ],
     "actual_output": "There are three conditionals in English, used for future, unreal present, and unreal past situations respectively.",
     "threshold": 0.7
