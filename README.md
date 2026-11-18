@@ -156,3 +156,17 @@ stay local (`deepeval view` offers to save the latest run to the platform).
   cents. Live runs add one agent call per case.
 - Borderline scores can flicker between runs — that's judge variance, and
   it's worth teaching rather than hiding.
+
+## Design decisions
+
+- **Everything starts broken on purpose.** The system prompt, tool descriptions and retriever each carry a deliberate flaw, so every one of the 50 cases fails on day one and each fix is measurable.
+- **Recorded mode by default.** Tests replay the broken outputs stored in the dataset, so a run is cheap and repeatable; `LIVE=1` regenerates outputs with your fixed code.
+- **One metric per lesson.** Each case targets one of 14 deepeval metrics, so a failure points at one concept.
+
+## Checks that need no API key
+
+```bash
+pip install pytest && pytest -q tests/test_dataset.py   # dataset shape: 50 cases, unique ids, 14 metrics, valid thresholds
+```
+
+CI runs these on every push. The eval suite itself (`tests/test_evals.py`) needs an LLM judge and is meant to fail until you fix the agent.
